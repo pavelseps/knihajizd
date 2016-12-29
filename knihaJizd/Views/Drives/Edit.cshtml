@@ -1,0 +1,52 @@
+﻿@model knihaJizd.Models.Drives
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Drives</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.User)
+        @Html.HiddenFor(model => model.Car)
+        @Html.HiddenFor(model => model.StartDate)
+        @Html.HiddenFor(model => model.StartKm)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StopDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.StopDate, "{0:dd/MM/yyyy HH:mm:ss}", new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.StopDate, "", new { @class = "text-danger" })
+                @ViewBag.DateError
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StopKm, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StopKm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StopKm, "", new { @class = "text-danger" })
+                @ViewBag.KmError
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

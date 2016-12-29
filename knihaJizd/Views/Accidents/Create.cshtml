@@ -1,0 +1,269 @@
+﻿@model knihaJizd.Models.Accidents
+
+@{
+    ViewBag.Title = "Create";
+}
+<script>
+    function previewFile(id) {
+        var preview = document.getElementById(id + 'Image');
+        var hidden = document.getElementById(id);
+        var file = document.getElementById(id + 'Input').files[0];
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            var canvas = document.createElement('canvas');
+            var image = new Image();
+            image.src = reader.result;
+
+            var max_width = 1000;
+            var max_height = 1000;
+            var width = image.width;
+            var height = image.height;
+
+            // calculate the width and height, constraining the proportions
+            if (width > height) {
+                if (width > max_width) {
+                    height = Math.round(height *= max_width / width);
+                    width = max_width;
+                }
+            } else {
+                if (height > max_height) {
+                    width = Math.round(width *= max_height / height);
+                    height = max_height;
+                }
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0, width, height);
+
+
+            preview.src = canvas.toDataURL("image/jpeg", 0.7);
+            hidden.value = canvas.toDataURL("image/jpeg", 0.7);
+            preview.style.display = "inline";
+
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+
+        }
+    }
+</script>
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Accidents</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.DriveId)
+
+
+        <div>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#info" aria-controls="home" role="tab" data-toggle="tab">Důležité info</a></li>
+                <li role="presentation"><a href="#mainData" aria-controls="home" role="tab" data-toggle="tab">Obecné informace o nehodě</a></li>
+                <li role="presentation"><a href="#driver2" aria-controls="profile" role="tab" data-toggle="tab">Řidič druhého vozida</a></li>
+                <li role="presentation"><a href="#driver1foto" aria-controls="home" role="tab" data-toggle="tab">Fotky vašeho vozidla</a></li>
+                <li role="presentation"><a href="#driver2foto" aria-controls="home" role="tab" data-toggle="tab">Fotky druhého vozidla</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="info">
+                    <h2>Nějaké to info</h2>
+                    <p>telefon na šefa</p>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="mainData">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AccidentTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.AccidentTime, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AccidentTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AccidentAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AccidentAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AccidentAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ImgSituation, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.HiddenFor(model => model.ImgSituation, new { @id = "ImgSituation" })
+                            <input type="file" onchange="previewFile('ImgSituation')" id="ImgSituationInput" accept="image/jpeg"><br>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="" height="100" alt="Image preview..." style="display: none;" id="ImgSituationImage">
+                            @Html.ValidationMessageFor(model => model.ImgSituation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Info, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Info, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Info, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DriveAble, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.DriveAble)
+                                @Html.ValidationMessageFor(model => model.DriveAble, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="driver2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2Surname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2Surname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2DrivingLicenceId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2DrivingLicenceId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2DrivingLicenceId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2InsuranceCompany, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2InsuranceCompany, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2InsuranceCompany, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2CarName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2CarName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2CarName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2CarColor, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2CarColor, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2CarColor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2SPZ, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2SPZ, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2SPZ, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2VIN, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Driver2VIN, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Driver2VIN, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="driver1foto">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver1DetailImg, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.HiddenFor(model => model.Driver1DetailImg, new { @id = "Driver1DetailImg" })
+                            <input type="file" onchange="previewFile('Driver1DetailImg')" id="Driver1DetailImgInput" accept="image/jpeg"><br>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="" height="100" alt="Image preview..." style="display: none;" id="Driver1DetailImgImage">
+                            @Html.ValidationMessageFor(model => model.Driver1DetailImg, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver1VINImg, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.HiddenFor(model => model.Driver1VINImg, new { @id = "Driver1VINImg" })
+                            <input type="file" onchange="previewFile('Driver1VINImg')" id="Driver1VINImgInput" accept="image/jpeg"><br>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="" height="100" alt="Image preview..." style="display: none;" id="Driver1VINImgImage">
+                            @Html.ValidationMessageFor(model => model.Driver1VINImg, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="driver2foto">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2DetailImg, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.HiddenFor(model => model.Driver2DetailImg, new { @id = "Driver2DetailImg" })
+                            <input type="file" onchange="previewFile('Driver2DetailImg')" id="Driver2DetailImgInput" accept="image/jpeg"><br>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="" height="100" alt="Image preview..." style="display: none;" id="Driver2DetailImgImage">
+                            @Html.ValidationMessageFor(model => model.Driver2DetailImg, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Driver2VINImg, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.HiddenFor(model => model.Driver2VINImg, new { @id = "Driver2VINImg" })
+                            <input type="file" onchange="previewFile('Driver2VINImg')" id="Driver2VINImgInput" accept="image/jpeg"><br>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="" height="100" alt="Image preview..." style="display: none;" id="Driver2VINImgImage">
+                            @Html.ValidationMessageFor(model => model.Driver2VINImg, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 text-right">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

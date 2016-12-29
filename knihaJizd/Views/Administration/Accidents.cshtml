@@ -1,0 +1,52 @@
+﻿@model IEnumerable<knihaJizd.Models.Accidents>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Drives.Cars.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Drives.Cars.SPZ)
+        </th>
+        <th>
+            Jmeno uživatele
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccidentAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriveAble)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Drives.Cars.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Drives.Cars.SPZ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Drives.AspNetUsers.Name) @Html.DisplayFor(modelItem => item.Drives.AspNetUsers.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccidentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriveAble)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "AccidentsDetails", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<knihaJizd.Models.Accidents>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Vídej v administraci</h1>
+
+<p>
+    @Html.ActionLink("Auta", "Cars")<br />
+    @Html.ActionLink("Uživatelé", "Users")<br />
+    @Html.ActionLink("Jízdy", "Drives")<br />
+    @Html.ActionLink("Nehody", "Accidents")
+</p>

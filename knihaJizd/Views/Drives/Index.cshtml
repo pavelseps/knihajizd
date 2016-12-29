@@ -1,0 +1,62 @@
+﻿@model IEnumerable<knihaJizd.Models.Drives>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cars.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StopDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartKm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StopKm)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cars.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StopDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartKm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StopKm)
+        </td>
+        <td class="text-center">
+            @if (item.StopKm == 0 || item.StopKm == null)
+            {
+                @Html.ActionLink("Ukončit jízdu", "Edit", new { id = item.Id }, new { @class = "btn btn-xs btn-success" })<br />
+                @Html.ActionLink("nahlasit nehodu", "../Accidents/Create", new { id = item.Id }, new { @class = "btn btn-xs btn-danger" })
+            }
+        </td>
+    </tr>
+}
+
+</table>

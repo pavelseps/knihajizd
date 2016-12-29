@@ -1,0 +1,263 @@
+﻿@model knihaJizd.Models.Accidents
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Accidents</h4>
+    <hr />
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#mainData" aria-controls="home" role="tab" data-toggle="tab">Obecné informace o nehodě</a></li>
+            <li role="presentation"><a href="#driver1" aria-controls="profile" role="tab" data-toggle="tab">Řidič vašeho vozidla</a></li>
+            <li role="presentation"><a href="#driver2" aria-controls="profile" role="tab" data-toggle="tab">Řidič druhého vozida</a></li>
+            <li role="presentation"><a href="#driver1foto" aria-controls="home" role="tab" data-toggle="tab">Fotky vašeho vozidla</a></li>
+            <li role="presentation"><a href="#driver2foto" aria-controls="home" role="tab" data-toggle="tab">Fotky druhého vozidla</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="mainData">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AccidentAddress)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AccidentAddress)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ImgSituation)
+                    </dt>
+
+                    <dd>
+                        <img src="@Html.DisplayFor(model => model.ImgSituation)" alt="" />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Info)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Info)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DriveAble)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DriveAble)
+                    </dd>
+                </dl>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="driver1">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.AspNetUsers.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.AspNetUsers.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.AspNetUsers.Surname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.AspNetUsers.Surname)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.AspNetUsers.PhoneNumber)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.AspNetUsers.PhoneNumber)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.AspNetUsers.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.AspNetUsers.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.AspNetUsers.DrivingLicenceId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.AspNetUsers.DrivingLicenceId)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.Cars.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.Cars.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.Cars.Color)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.Cars.Color)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.Cars.SPZ)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.Cars.SPZ)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Drives.Cars.VIN)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Drives.Cars.VIN)
+                    </dd>
+                </dl>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="driver2">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2Surname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2Surname)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2Phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2DrivingLicenceId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2DrivingLicenceId)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2InsuranceCompany)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2InsuranceCompany)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2CarName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2CarName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2CarColor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2CarColor)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2SPZ)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2SPZ)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2VIN)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Driver2VIN)
+                    </dd>
+                </dl>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="driver1foto">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver1DetailImg)
+                    </dt>
+
+                    <dd>
+                        <img src="@Html.DisplayFor(model => model.Driver1DetailImg)" alt="" />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver1VINImg)
+                    </dt>
+
+                    <dd>
+                        <img src="@Html.DisplayFor(model => model.Driver1VINImg)" alt="" />
+                    </dd>
+
+                    
+                </dl>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="driver2foto">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2DetailImg)
+                    </dt>
+
+                    <dd>
+                        <img src="@Html.DisplayFor(model => model.Driver2DetailImg)" alt="" />
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Driver2VINImg)
+                    </dt>
+
+                    <dd>
+                        <img src="@Html.DisplayFor(model => model.Driver2VINImg)" alt="" />
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
