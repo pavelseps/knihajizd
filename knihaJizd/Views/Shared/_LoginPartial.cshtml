@@ -7,7 +7,13 @@
     @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Administrace", "Index", "Administration")</li>
+
+
+            @if (Helper.isAdmin(User.Identity.GetUserId()))
+            {
+                <li>@Html.ActionLink("Administrace", "Index", "Administration")</li>
+            }
+
             <li>@Html.ActionLink("Začít jízdu", "Index", "Cars")</li>
             <li>@Html.ActionLink("Moje jízdy", "Index", "Drives")</li>
         </ul>
@@ -19,10 +25,4 @@
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Odhlásit</a></li>
     </ul>
     }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Přihlásit", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
 }

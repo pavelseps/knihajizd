@@ -161,3 +161,4 @@ C:\Users\Pavel\prace\skola\knihaJizd\knihaJizd\bin\Microsoft.Owin.Security.OAuth
 C:\Users\Pavel\prace\skola\knihaJizd\knihaJizd\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Pavel\prace\skola\knihaJizd\knihaJizd\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Pavel\prace\skola\knihaJizd\knihaJizd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Pavel\prace\skola\knihaJizd\knihaJizd\obj\Debug\knihaJizd.csprojResolveAssemblyReference.cache

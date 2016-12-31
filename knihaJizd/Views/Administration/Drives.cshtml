@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<knihaJizd.Models.Drives>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Jízdy";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+            @Html.DisplayNameFor(model => model.AspNetUsers.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cars.Name)
+            @Html.DisplayNameFor(model => model.Cars.Name) automobilu
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StartDate)
@@ -32,7 +32,8 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+            @Html.DisplayFor(modelItem => item.AspNetUsers.Name) 
+            @Html.DisplayFor(modelItem => item.AspNetUsers.Surname)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cars.Name)

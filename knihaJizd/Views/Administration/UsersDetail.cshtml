@@ -1,14 +1,18 @@
 ﻿@model knihaJizd.Models.AspNetUsers
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Detail uživatele";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="clearfix">
+    <h1 class="pull-left">@ViewBag.Title</h1>
+    <div class="pull-right">
+        @Html.ActionLink("Upravit", "UsersEdit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    </div>
+</div>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
-    <hr />
+   
     <dl class="dl-horizontal">
         <dt>@Html.DisplayNameFor(model => model.Name)</dt>
         <dd>@Html.DisplayFor(model => model.Name)</dd>
@@ -23,6 +27,4 @@
         <dt>@Html.DisplayNameFor(model => model.DrivingLicenceId)</dt>
         <dd>@Html.DisplayFor(model => model.DrivingLicenceId)</dd>
     </dl>
-
-    @Html.ActionLink("Editovat", "UsersEdit", new { id = Model.Id })
 </div>

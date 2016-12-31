@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<knihaJizd.Models.Accidents>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Nehody";
 }
 
-<h2>Index</h2>
+<h1>@ViewBag.Title</h1>
 
 <table class="table">
     <tr>
@@ -19,9 +19,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AccidentAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DriveAble)
         </th>
         <th></th>
     </tr>
@@ -41,10 +38,7 @@
             @Html.DisplayFor(modelItem => item.AccidentAddress)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DriveAble)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "AccidentsDetails", new { id=item.Id })
+            @Html.ActionLink("Detail", "AccidentsDetails", new { id=item.Id }, new { @class="btn btn-primary btn-xs" })
         </td>
     </tr>
 }

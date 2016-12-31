@@ -1,3 +1,5 @@
 knihajizd.sln
 .vs/
 packages/
+knihaJizd/App_Data/aspnet-knihaJizd-20161225033830.mdf
+knihaJizd/App_Data/aspnet-knihaJizd-20161225033830_log.ldf

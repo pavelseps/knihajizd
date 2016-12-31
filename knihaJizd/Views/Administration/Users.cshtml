@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<knihaJizd.Models.AspNetUsers>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Uživatelé";
 }
 
-<h2>Users</h2>
+<div class="clearfix">
+    <h1 class="pull-left">@ViewBag.Title</h1>
+    <div class="pull-right">
+        @Html.ActionLink("Přidat uživatele", "../Account/Register", null, new { @class = "btn btn-success" })
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "../Account/Register")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -19,6 +21,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
         </th>
         <th></th>
     </tr>
@@ -36,8 +41,11 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Detail", "UsersDetail", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "UsersDelete", new { id = item.Id })
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td class="text-right">
+                @Html.ActionLink("Smazat", "UsersDelete", new { id = item.Id }, new { @class="btn btn-danger btn-xs" })
+                @Html.ActionLink("Detail", "UsersDetail", new { id = item.Id }, new { @class ="btn btn-primary btn-xs" })
             </td>
         </tr>
     }

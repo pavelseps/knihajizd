@@ -27,8 +27,14 @@ namespace knihaJizd.Controllers
             {
                 return RedirectToAction("Error", "Administration");
             }
-            
-            return View(db.Accidents.OrderByDescending(a => a.AccidentTime).ToList());
+            var returnVal = db.Accidents.ToList();
+
+            if(returnVal.Count != 0)
+            {
+                returnVal.Reverse();
+            }
+
+            return View(returnVal);
         }
 
         // GET: Accidents/Details/5
@@ -94,6 +100,7 @@ namespace knihaJizd.Controllers
 
             if (ModelState.IsValid)
             {
+                cars.DriveAble = true;
                 db.Cars.Add(cars);
                 db.SaveChanges();
                 return RedirectToAction("Cars");

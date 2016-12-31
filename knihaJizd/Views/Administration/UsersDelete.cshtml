@@ -1,14 +1,12 @@
 ﻿@model knihaJizd.Models.AspNetUsers
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Smazat uživatele";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h1>@ViewBag.Title</h1>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Opravdu chcete smazat?</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>@Html.DisplayNameFor(model => model.Name)</dt>
         <dd>@Html.DisplayFor(model => model.Name)</dd>
@@ -24,13 +22,13 @@
         <dd>@Html.DisplayFor(model => model.DrivingLicenceId)</dd>
     </dl>
 
+    <h4 class="text-danger">Opravdu chcete smazat?</h4>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Users")
+        <div class="form-actions no-color text-right">
+            <input type="submit" value="Smazat" class="btn btn-danger" />
         </div>
     }
 </div>

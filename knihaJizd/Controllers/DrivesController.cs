@@ -18,8 +18,22 @@ namespace knihaJizd.Controllers
         // GET: Drives
         public ActionResult Index()
         {
-            var drives = db.Drives.Include(d => d.AspNetUsers).Include(d => d.Cars).OrderByDescending(d => d.StartDate);
-            return View(drives.ToList());
+            string user = User.Identity.GetUserId();
+            var drives = db.Drives.Where(d => d.User == user).Include(d => d.AspNetUsers).Include(d => d.Cars).OrderByDescending(d => d.StartDate);
+            ViewBag.empty = false;
+
+            try
+            {
+                drives.ToList();
+            }
+            catch
+            {
+                ViewBag.empty = true;
+                return View();
+            }
+
+            return View(drives);
+            
         }
 
         // GET: Drives/Create

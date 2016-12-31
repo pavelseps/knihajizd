@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<knihaJizd.Models.Cars>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Automobily";
 }
-
-<h2>Index</h2>
-
-@Html.ActionLink("Create new", "CarsCreate")
+<div class="clearfix">
+    <h1 class="pull-left">@ViewBag.Title</h1>
+    <div class="pull-right">
+        @Html.ActionLink("Přidat automobil", "CarsCreate", null, new { @class="btn btn-success" })
+    </div>
+</div>
 
 <table class="table">
     <tr>
@@ -28,8 +30,10 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+
+@foreach (var item in Model)
+{
+    <tr @(item.DriveAble ? String.Empty : "class=bg-danger" )>
         <td>
             <img src="@Html.DisplayFor(modelItem => item.Photo)" alt="">
         </td>
@@ -45,11 +49,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Color)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "CarsEdit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "CarsDelete", new { id = item.Id })
+        <td class="text-right">
+            @Html.ActionLink("Smazat", "CarsDelete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+            @Html.ActionLink("Upravit", "CarsEdit", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
         </td>
     </tr>
+        
 }
 
 </table>

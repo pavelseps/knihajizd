@@ -4,12 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h1>Omlouvám se, ale nejste administrátor</h1>
-<p>Přihlašte se jako administrátor</p>
-@using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
-{
-    <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-primary">Odhlásit</a>
-}
+<div class="text-center">
+    <h1>Omlouvám se, ale nejste administrátor</h1>
+    <p>Přihlašte se jako administrátor</p>
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+    {
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-primary">Odhlásit</a>
+    }
+</div>
 
 
 

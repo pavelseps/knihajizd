@@ -1,4 +1,4 @@
-namespace knihaJizd.Models
+﻿namespace knihaJizd.Models
 {
     using System;
     using System.Collections.Generic;
@@ -14,41 +14,58 @@ namespace knihaJizd.Models
         [DisplayName("Adresa nehody")]
         public string AccidentAddress { get; set; }
 
-        [DisplayName("�as nehody")]
+        [DisplayName("Čas nehody")]
         public DateTime? AccidentTime { get; set; }
 
+        [DisplayName("Jméno druhého řidiče")]
         public string Driver2Name { get; set; }
 
+        [DisplayName("Příjmení druhého řidiče")]
         public string Driver2Surname { get; set; }
 
+        [DisplayName("Telefon druhého řidiče")]
         public string Driver2Phone { get; set; }
 
+        [DisplayName("Adresa druhého řidiče")]
         public string Driver2Address { get; set; }
 
+        [DisplayName("Č. Řidičského průkazu druhého řidiče")]
         public string Driver2DrivingLicenceId { get; set; }
 
+        [DisplayName("Pojišťovna druhého řidiče")]
         public string Driver2InsuranceCompany { get; set; }
 
+        [DisplayName("Název automobilu druhého řidiče")]
         public string Driver2CarName { get; set; }
 
+        [DisplayName("Barva automobilu druhého řidiče")]
         public string Driver2CarColor { get; set; }
 
+        [DisplayName("SPZ automobilu druhého řidiče")]
         public string Driver2SPZ { get; set; }
 
+        [DisplayName("VIN kód druhého řidiče")]
         public string Driver2VIN { get; set; }
-        
+
+        [DisplayName("Fotka celé situace")]
         public string ImgSituation { get; set; }
-        
+
+        [DisplayName("Detailní fotka vaše vozidla")]
         public string Driver1DetailImg { get; set; }
-        
+
+        [DisplayName("Detailní fotka druhého vozidla")]
         public string Driver2DetailImg { get; set; }
-        
+
+        [DisplayName("Fotka VIN kódu vašeho vozidla")]
         public string Driver1VINImg { get; set; }
-        
+
+        [DisplayName("Fotka VIN kódu druhého řidiče")]
         public string Driver2VINImg { get; set; }
 
+        [DisplayName("Poznámky")]
         public string Info { get; set; }
 
+        [DisplayName("Schopné jízdy")]
         public bool DriveAble { get; set; }
 
         public int DriveId { get; set; }

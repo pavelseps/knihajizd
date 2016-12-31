@@ -1,6 +1,20 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
+}
+
+.navbar{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    background: #fcfcfc;
+}
+
+.navbar form{
+    padding: 30px 0 0;
+}
+
+h1{
+    margin-top: 0;
+    margin-bottom: 25px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -16,9 +30,26 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.bg-danger{
+    background: #f2dede;
+}
+
+dl > dt{
+    padding-bottom: 5px;
+}
+
+dl > *{
+    padding-top: 5px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+dl > *:last-child,
+dl > *:nth-last-child(2){
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
 }

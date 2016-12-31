@@ -1,14 +1,22 @@
 ﻿@model IEnumerable<knihaJizd.Models.Accidents>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Administrace";
 }
 
-<h1>Vídej v administraci</h1>
+<h1>Vítej v administraci</h1>
 
-<p>
-    @Html.ActionLink("Auta", "Cars")<br />
-    @Html.ActionLink("Uživatelé", "Users")<br />
-    @Html.ActionLink("Jízdy", "Drives")<br />
-    @Html.ActionLink("Nehody", "Accidents")
-</p>
+<div class="row">
+    <div class="col-sm-3">
+        @Html.ActionLink("Auta", "Cars", null, new { @class = "btn btn-success btn-lg btn-block" })
+    </div>
+    <div class="col-sm-3">
+        @Html.ActionLink("Uživatelé", "Users", null, new { @class = "btn btn-success btn-lg btn-block" })
+    </div>
+    <div class="col-sm-3">
+        @Html.ActionLink("Jízdy", "Drives", null, new { @class = "btn btn-success btn-lg btn-block" })
+    </div>
+    <div class="col-sm-3">
+        @Html.ActionLink("Nehody", "Accidents", null, new { @class = "btn btn-success btn-lg btn-block" })
+    </div>
+</div>

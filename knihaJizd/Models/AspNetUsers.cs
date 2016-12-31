@@ -1,7 +1,8 @@
-namespace knihaJizd.Models
+﻿namespace knihaJizd.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -17,6 +18,7 @@ namespace knihaJizd.Models
         public string Id { get; set; }
 
         [StringLength(256)]
+        [DisplayName("E-Mail")]
         public string Email { get; set; }
 
         public bool EmailConfirmed { get; set; }
@@ -25,6 +27,7 @@ namespace knihaJizd.Models
 
         public string SecurityStamp { get; set; }
 
+        [DisplayName("Telefoní číslo")]
         public string PhoneNumber { get; set; }
 
         public bool PhoneNumberConfirmed { get; set; }
@@ -39,14 +42,25 @@ namespace knihaJizd.Models
 
         [Required]
         [StringLength(256)]
+        [DisplayName("Uživatelské jmeno")]
         public string UserName { get; set; }
 
+        [DisplayName("Administrator")]
         public bool Admin { get; set; }
 
+        [DisplayName("Jméno")]
         public string Name { get; set; }
+
+        [DisplayName("Příjmení")]
         public string Surname { get; set; }
+
+        [DisplayName("Adresa")]
         public string Address { get; set; }
+
+        [DisplayName("Č. Řidického průkazu")]
         public string DrivingLicenceId { get; set; }
+
+
         public bool Active { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
