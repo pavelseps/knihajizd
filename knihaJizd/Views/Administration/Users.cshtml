@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<knihaJizd.Models.AspNetUsers>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Uživatelé";
@@ -44,7 +45,10 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td class="text-right">
-                @Html.ActionLink("Smazat", "UsersDelete", new { id = item.Id }, new { @class="btn btn-danger btn-xs" })
+                @if (item.Id != User.Identity.GetUserId())
+                {
+                    @Html.ActionLink("Smazat", "UsersDelete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+                }
                 @Html.ActionLink("Detail", "UsersDetail", new { id = item.Id }, new { @class ="btn btn-primary btn-xs" })
             </td>
         </tr>

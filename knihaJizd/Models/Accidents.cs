@@ -63,6 +63,7 @@
         public string Driver2VINImg { get; set; }
 
         [DisplayName("Poznámky")]
+        [DataType(DataType.MultilineText)]
         public string Info { get; set; }
 
         [DisplayName("Schopné jízdy")]
