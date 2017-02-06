@@ -8,9 +8,6 @@ namespace knihaJizd
 {
     public class Helper
     {
-        //private static ModelUserDriveCarAcident db = new ModelUserDriveCarAcident();
-
-
         public static bool isAdmin(string id)
         {
             ModelUserDriveCarAcident db = new ModelUserDriveCarAcident();
